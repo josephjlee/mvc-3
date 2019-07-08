@@ -6,7 +6,7 @@ use Core\Database;
 
 class PostsModel
 {
-    private $id = null;
+    private $id;
     private $title;
     private $content;
     private $authorId;

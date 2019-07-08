@@ -12,14 +12,16 @@ if (isset($_SERVER['PATH_INFO'])) {
 } else {
     $path = '/';
 }
-
+echo $path;
+echo '<hr>';
 $path = explode('/', $path);
-//print_r($path);
+print_r($path);
+
 $helper = new Helper();
 if (isset($path[1]) && !empty($path[1])) {
 
     $controller = $helper->getController($path[1]);
-
+ //controleris/
     if (isset($path[2]) && !empty($path[2])) {
         $method = $path[2];
 
@@ -31,7 +33,9 @@ if (isset($path[1]) && !empty($path[1])) {
         if (method_exists($object, $method)) {
 
             if(isset($path[3]) && !empty($path[3])){
-                $object->{$method}($path[3]);
+                $id = $path[3];
+
+                $object->{$method}($id);
             }else {
                 $object->{$method}();
             }

@@ -1,8 +1,8 @@
-<?php if(count($this->posts)): ?>
+<?php if(!empty($this->posts)): ?>
     <div class="posts-wrapper">
         <?php foreach($this->posts as $post): ?>
             <div class="post-colum">
-                <a href="http://127.0.0.1:8001/index.php/post/show/?id=<?php echo $post->id ?>">
+                <a href="http://127.0.0.1:8001/index.php/post/show/<?php echo $post->id ?>">
                     <img src="<?php echo $post->image ?>">
                     <h3><?php echo $post->title ?></h3>
                 </a>

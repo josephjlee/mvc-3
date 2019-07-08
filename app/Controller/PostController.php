@@ -15,6 +15,7 @@ class PostController extends Controller
     public function show($id){
         $postsObject = new \App\Model\PostsModel();
         $postsObject->load($id);
+
         $this->view->post = $postsObject;
         $this->view->render('posts/post');
     }
@@ -28,7 +29,7 @@ class PostController extends Controller
         $postModelObject = new \App\Model\PostsModel();
         $postModelObject->setTitle($_POST['title']);
         $postModelObject->setContent($_POST['content']);
-        $postModelObject->setImage($_POST['img']);
+        $postModelObject->setImage($_POST['image']);
         $postModelObject->setAuthorId(1);
         $postModelObject->save();
     }
@@ -42,13 +43,12 @@ class PostController extends Controller
     }
 
     public function update(){
-        $data = $_POST;
         $postModelObject = new \App\Model\PostsModel();
         $postModelObject->setTitle($_POST['title']);
         $postModelObject->setContent($_POST['content']);
         $postModelObject->setImage($_POST['image']);
         $postModelObject->setAuthorId(1);
-        $postModelObject->save($data['id']);
+        $postModelObject->save($_POST['id']);
     }
 
     public function delete($id){

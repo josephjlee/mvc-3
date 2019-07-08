@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Core\Controller;
+use \App\Helper\InputHelper;
 
 class AccountController extends Controller
 {
@@ -23,15 +24,20 @@ class AccountController extends Controller
 
     public function create()
     {
+        if(InputHelper::checkEmail($_POST['email'])){
+            if(InputHelper::passwordMatch($_POST['password'], $_POST['password2'])){
+                $user = new \App\Model\UsersModel();
+                $user->setUsername($_POST['name']);
+                $user->setEmail($_POST['email']);
+                $pass = \App\Helper\InputHelper::passwordGenerator($_POST['password']);
+                $user->setPassword($pass);
+                $user->setActive(1);
+                $user->setRoleId(1);
+                $user->save();
+            }
+        }
 
-        $user = new \App\Model\UsersModel();
-        $user->setUsername($_POST['name']);
-        $user->setEmail($_POST['email']);
-        $pass = \App\Helper\InputHelper::passwordGenerator($_POST['password']);
-        $user->setPassword($pass);
-        $user->setActive(1);
-        $user->setRoleId(1);
-        $user->save();
+
 
     }
 

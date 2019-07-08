@@ -37,7 +37,6 @@ class InputHelper
     {
         $db = new \Core\Database();
         $db->select()->from('user')->where('email', $email);
-
         if($db->get()) {
             return false;
         }

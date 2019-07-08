@@ -4,10 +4,6 @@ namespace App\Helper;
 
 class Helper
 {
-    public function instanceMaker($controller){
-
-    }
-
 
     public function getController($path){
         $controller = strtolower($path); //mazasios raides post

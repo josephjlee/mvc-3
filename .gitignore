@@ -1,4 +1,4 @@
-vendor/*
-.git
-.idea
-.DS_Store
+/vendor/*
+/.git
+/.idea
+/.DS_Store

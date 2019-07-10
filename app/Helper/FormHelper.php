@@ -12,15 +12,26 @@ class FormHelper
 
     public function addInput($attributes, $label = '', $wrapper = '')
     {
-        $this->html .= '<input ';
+        //implementuoti Label
+        $html = '';
+        $html.= '<input ';
 
         foreach ($attributes as $key => $element){
-            $this->html .= ' '.$key.'="'.$element.'"';
+            $html .= ' '.$key.'="'.$element.'"';
         }
 
-        $this->html .= ' >';
+        $html .= ' >';
+        if($wrapper != ''){
+            $html = '<div class="'.$wrapper.'">'.$html.'</div>';
+        }
+        $this->html .= $html;
         return $this;
     }
+
+    //selectas
+
+    //textarea
+
 
     public function get()
     {

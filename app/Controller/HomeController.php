@@ -29,7 +29,10 @@ class HomeController extends Controller
             'max' => '100',
 
 
-        ])->addSelect($options, 'city');
+        ])->addSelect($options, 'city')
+        ->addTextarea([
+            'class'=> 'textareaa'
+        ], 'mano tekstas');
 
         echo $form->get();
     }

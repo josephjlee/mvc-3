@@ -31,7 +31,7 @@ class FormHelper
     public function addSelect($options, $name, $wrapper = '', $label = '')
     {
         $html = '';
-        $html .= '<select name="'.$name.'">';
+        $html .= '<select name="' . $name . '">';
         foreach ($options as $value => $option) {
             $html .= '<option value="' . $value . '"';
             $html .= ' >';
@@ -46,9 +46,37 @@ class FormHelper
         return $this;
     }
 
-    //selectas
+    public function addTextarea($attributes, $value = '', $label = "", $wrapper = "")
+    {
+        $html = '';
 
-    //textarea
+        if ($label != '') {
+            if (isset($attributes['id'])) {
+                $for = 'for="' . $attributes['id'] . '"';
+            } else {
+                $for = "";
+            }
+
+            $html .= '<label ' . $for . '>' . $label . '</label>';
+        }
+
+        $html .= '<textarea ';
+
+        foreach ($attributes as $key => $element) {
+            $html .= ' ' . $key . '="' . $element . '"';
+        }
+        $html .= ' >';
+        $html .= $value;
+        $html .= '</textarea>';
+
+        if ($wrapper != '') {
+            $html = '<div class="' . $wrapper . '">' . $html . '</div>';
+        }
+
+
+        $this->html .= $html;
+        return $this;
+    }
 
 
     public function get()

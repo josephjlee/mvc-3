@@ -6,6 +6,14 @@ use App\Helper\FormHelper;
 class HomeController extends Controller
 {
     public function index(){
+
+        $options = [
+            1 => 'Vilnius',
+            2 => 'Kaunas',
+            3 => 'Siauliai',
+            4 => 'Klaipeda',
+        ];
+        echo 'ok';
         $form = new FormHelper('account/create','post', 'registration');
         $form->addInput([
             'name' => 'name',
@@ -21,8 +29,8 @@ class HomeController extends Controller
             'max' => '100',
 
 
-        ]);
+        ])->addSelect($options, 'city');
 
-        $this->view->form =  $form->get();
+        echo $form->get();
     }
 }
